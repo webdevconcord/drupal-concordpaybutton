@@ -1,13 +1,16 @@
 name: ConcordPay Button
 type: module
 description: 'ConcordPay payment button plugin'
-package: Payment Gateway
+package: Custom
 core: 8.x
 core_version_requirement: ^8 || ^9
-configure: concordpay_button.configuration
+dependencies:
+  - shortcode
+configure: concordpay_button.settings
 hidden: false
-'interface translation project': concordpay_button
-'interface translation server pattern': modules/%project/translations/%language.po
+interface translation project: concordpay_button
+interface translation server pattern: modules/custom/%project/translations/%language.po
+php: 7.0
 
 version: '1.0.0'
 project: 'concordpay_button'

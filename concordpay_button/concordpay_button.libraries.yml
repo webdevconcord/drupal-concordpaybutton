@@ -1,0 +1,9 @@
+concordpay_button:
+  version: 1.0
+  css:
+    theme:
+      css/concordpay.css: {}
+  js:
+      js/CPBModal.js: {}
+      js/concordpay.js: {}
+

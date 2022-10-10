@@ -1,0 +1,43 @@
+<?php
+
+/**
+ * @file
+ *
+ * Register hooks for ShortCodes that use Twig templates.
+ */
+
+use Drupal\Core\Url;
+use Drupal\concordpay_button\Utils\ConcordPayHelper;
+
+/**
+ * Implements hook_theme().
+ */
+function concordpay_button_theme() {
+  return [
+    'concordpay_button' => [
+      'variables' => ['url' => NULL, 'attributes' => [], 'text' => ''],
+    ],
+    'concordpay_modal' => [
+      'variables' => []
+    ]
+  ];
+}
+
+/**
+ * Link module CSS and JS files.
+ *
+ * @param array $page
+ *
+ * @return void
+ */
+function concordpay_button_page_attachments(array &$page) {
+    $page['#attached']['library'][] = 'concordpay_button/concordpay_button';
+
+    // Add ConcordPay params to js file.
+    $config = ConcordPayHelper::getPluginConfig();
+    $page['#attached']['drupalSettings']['cpb_mode'] = $config['cpb_mode'] ?? ConcordPayHelper::CPB_MODE_PHONE;
+
+    $host = \Drupal::request()->getSchemeAndHttpHost();
+    $cpb_ajax = Url::fromRoute('concordpay_button.payment')->toString();
+    $page['#attached']['drupalSettings']['cpb_ajax']['url'] = $host . $cpb_ajax;
+}

@@ -10,8 +10,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2021-06-14 09:14+0300\n"
-"PO-Revision-Date: 2021-06-14 09:16+0300\n"
+"POT-Creation-Date: 2022-04-11 10:51+0300\n"
+"PO-Revision-Date: 2022-04-11 12:11+0300\n"
 "Last-Translator: \n"
 "Language-Team: Ukrainian <EMAIL@ADDRESS>\n"
 "Language: uk\n"
@@ -23,64 +23,233 @@ msgstr ""
 "X-Generator: Poedit 2.0.6\n"
 "X-Poedit-KeywordsList: t\n"
 "X-Poedit-Basepath: ..\n"
-"X-Poedit-SearchPath-0: commerce_concordpay.info.yml\n"
-"X-Poedit-SearchPath-1: config/schema/commerce_concordpay.schema.yml\n"
-"X-Poedit-SearchPath-2: src/api/ConcordpayAPI.php\n"
-"X-Poedit-SearchPath-3: src/Plugin/Commerce/PaymentGateway/Concordpay.php\n"
-"X-Poedit-SearchPath-4: src/PluginForm/Redirect/ConcordpayForm.php\n"
+"X-Poedit-SearchPath-0: js/concordpay.js\n"
+"X-Poedit-SearchPath-1: js/CPBModal.js\n"
+"X-Poedit-SearchPath-2: src/Controller/PaymentController.php\n"
+"X-Poedit-SearchPath-3: src/Form/ConcordpaySettingsForm.php\n"
+"X-Poedit-SearchPath-4: src/Plugin/Shortcode/ConcordpayButtonShortcode.php\n"
+"X-Poedit-SearchPath-5: src/Utils/ConcordPayApi.php\n"
+"X-Poedit-SearchPath-6: src/Utils/ConcordPayHelper.php\n"
+"X-Poedit-SearchPath-7: concordpay_button.info.yml\n"
+"X-Poedit-SearchPath-8: concordpay_button.libraries.yml\n"
+"X-Poedit-SearchPath-9: concordpay_button.links.menu.yml\n"
+"X-Poedit-SearchPath-10: concordpay_button.module\n"
+"X-Poedit-SearchPath-11: concordpay_button.routing.yml\n"
 
-#: src/Plugin/Commerce/PaymentGateway/Concordpay.php:50
-msgid "Merchant ID"
-msgstr "Ідентифікатор продавця"
+#: concordpay_button.info.yml:0
+msgid "ConcordPay payment button plugin"
+msgstr "Плагін кнопки оплати ConcordPay"
 
-#: src/Plugin/Commerce/PaymentGateway/Concordpay.php:51
-#: src/Plugin/Commerce/PaymentGateway/Concordpay.php:59
-msgid "Given to Merchant by ConcordPay"
-msgstr "Надається продавцю сервісом ConcordPay"
+#: concordpay_button.info.yml:0
+msgid "Custom"
+msgstr "Custom"
 
-#: src/Plugin/Commerce/PaymentGateway/Concordpay.php:58
-msgid "Secret Key"
-msgstr "Секретний ключ"
+#: concordpay_button.links.menu.yml:0
+msgid "ConcordPay payment button settings"
+msgstr "Налаштування кнопки оплати ConcordPay"
 
-#: src/Plugin/Commerce/PaymentGateway/Concordpay.php:153
-msgid "Invalid Transaction. Please try again"
-msgstr "Недійсна транзакція. Будь ласка спробуйте ще раз"
+#: concordpay_button.routing.yml:0
+msgid "ConcordPay Button Settings form"
+msgstr "Форма налаштувань кнопки ConcordPay"
 
-#: src/Plugin/Commerce/PaymentGateway/Concordpay.php:188
-msgid ""
-"IPN for Order @order_number ignored: the transaction to be refunded does not "
-"exist."
-msgstr ""
-"Ігнорується IPN для замовлення @order_number: транзакція, що підлягає "
-"відшкодуванню, не існує."
+#: js/CPBModal.js:69
+msgid "Buyer info"
+msgstr "Дані покупця"
 
-#: src/Plugin/Commerce/PaymentGateway/Concordpay.php:196
-msgid ""
-"IPN for Order @order_number ignored: the transaction is already refunded."
-msgstr ""
-"IPN для замовлення @order_number ігнорується: транзакція вже відшкодована."
+#: js/CPBModal.js:102
+msgid "Pay Order"
+msgstr "Оплатити"
 
-#: src/PluginForm/Redirect/ConcordpayForm.php:33
-msgid "Error: for payment @id not found Payment Gateway!"
-msgstr "Помилка: для оплати @id не знайдено платіжний шлюз!"
+#: js/CPBModal.js:114
+msgid "Name"
+msgstr "Ім'я"
 
-#: src/PluginForm/Redirect/ConcordpayForm.php:46
-msgid "Error receiving the payment amount!"
-msgstr "Помилка отримання суми платежу!"
+#: js/CPBModal.js:114
+msgid "Enter your name"
+msgstr "Введіть ваше ім'я"
 
-#: src/PluginForm/Redirect/ConcordpayForm.php:53
+#: js/CPBModal.js:119
+msgid "Phone"
+msgstr "Телефон"
+
+#: js/CPBModal.js:119
+msgid "Your contact phone"
+msgstr "Ваш контактний телефон"
+
+#: js/CPBModal.js:124
+msgid "Email"
+msgstr "Email"
+
+#: js/CPBModal.js:124
+msgid "Your email"
+msgstr "Ваша ел. пошта"
+
+#: js/concordpay.js:107 src/Utils/ConcordPayHelper.php:77
+msgid "Invalid name"
+msgstr "Неправильне ім'я"
+
+#: js/concordpay.js:123 src/Utils/ConcordPayHelper.php:84
+msgid "Invalid phone number"
+msgstr "Неправильний телефон"
+
+#: js/concordpay.js:140 src/Utils/ConcordPayHelper.php:92
+msgid "Invalid email"
+msgstr "Неправильна ел. пошта"
+
+#: src/Controller/PaymentController.php:41
 msgid "Payment by card on the site"
 msgstr "Оплата карткою на сайті"
 
-#: src/api/ConcordpayAPI.php:123
-msgid "An error has occurred during payment"
-msgstr "An error has occurred during payment"
+#: src/Form/ConcordpaySettingsForm.php:40
+msgid "Merchant ID"
+msgstr "Ідентифікатор торговця"
+
+#: src/Form/ConcordpaySettingsForm.php:42
+#: src/Form/ConcordpaySettingsForm.php:50
+msgid "Given to Merchant by ConcordPay"
+msgstr "Надається торговцю сервісом ConcordPay"
+
+#: src/Form/ConcordpaySettingsForm.php:48
+msgid "Secret key"
+msgstr "Секретний ключ"
+
+#: src/Form/ConcordpaySettingsForm.php:55
+msgid "Currency"
+msgstr "Валюта"
+
+#: src/Form/ConcordpaySettingsForm.php:57
+msgid "Ukrainian hryvnia"
+msgstr "Українська гривня"
+
+#: src/Form/ConcordpaySettingsForm.php:58
+msgid "U.S. Dollar"
+msgstr "Долар США"
+
+#: src/Form/ConcordpaySettingsForm.php:59
+msgid "Euro"
+msgstr "Євро"
+
+#: src/Form/ConcordpaySettingsForm.php:62
+msgid "Specify your currency"
+msgstr "Вкажіть свою валюту"
+
+#: src/Form/ConcordpaySettingsForm.php:67
+msgid "Required fields"
+msgstr "Обов'язкові поля"
+
+#: src/Form/ConcordpaySettingsForm.php:69
+msgid "Do not require"
+msgstr "Не вимагати"
+
+#: src/Form/ConcordpaySettingsForm.php:70
+msgid "Name + Phone"
+msgstr "Ім'я + Телефон"
+
+#: src/Form/ConcordpaySettingsForm.php:71
+msgid "Name + Email"
+msgstr "Ім'я + Email"
+
+#: src/Form/ConcordpaySettingsForm.php:72
+msgid "Name + Phone + Email"
+msgstr "Ім'я + Телефон + Email"
+
+#: src/Form/ConcordpaySettingsForm.php:75
+msgid "Fields required to be entered by the buyer"
+msgstr "Поля, які має заповнити покупець"
+
+#: src/Form/ConcordpaySettingsForm.php:80
+msgid "Payment page language"
+msgstr "Мова сторінки оплати"
+
+#: src/Form/ConcordpaySettingsForm.php:82
+msgid "UA"
+msgstr "UA"
+
+#: src/Form/ConcordpaySettingsForm.php:83
+msgid "EN"
+msgstr "EN"
+
+#: src/Form/ConcordpaySettingsForm.php:84
+msgid "RU"
+msgstr "RU"
+
+#: src/Form/ConcordpaySettingsForm.php:87
+msgid "Specify ConcordPay payment page language"
+msgstr "Вкажіть мову сторінки оплати ConcordPay"
+
+#: src/Form/ConcordpaySettingsForm.php:92
+msgid "Order prefix"
+msgstr "Префікс замовлення"
+
+#: src/Form/ConcordpaySettingsForm.php:94
+msgid "Prefix for order"
+msgstr "Префікс для позначення замовлення"
+
+#: src/Form/ConcordpaySettingsForm.php:99
+#: src/Form/ConcordpaySettingsForm.php:101
+msgid "Redirect URL on successful payment"
+msgstr "URL перенаправлення успішного платежу"
+
+#: src/Form/ConcordpaySettingsForm.php:106
+#: src/Form/ConcordpaySettingsForm.php:108
+msgid "Redirect URL on failed payment"
+msgstr "URL перенаправлення невдалого платежу"
+
+#: src/Form/ConcordpaySettingsForm.php:113
+#: src/Form/ConcordpaySettingsForm.php:115
+msgid "Redirect URL on canceled payment"
+msgstr "URL перенаправлення відміненого платежу"
+
+#: src/Plugin/Shortcode/ConcordpayButtonShortcode.php:79
+msgid ""
+"[concordpay_button name=\"Product name\" price=\"12.50\"][/concordpay_button]"
+msgstr ""
+"[concordpay_button name=\"Назва товару\" price=\"12.50\"][/concordpay_button]"
+
+#: src/Plugin/Shortcode/ConcordpayButtonShortcode.php:81
+msgid ""
+"Inserts a link formatted like as a button. The <em>name</em> parameter "
+"provides the Product name.\n"
+"    The <em>price</em> shows product price."
+msgstr ""
+"Вставляє посилання у форматі кнопки. Параметр <em>name</em> містить назву "
+"продукту.\n"
+"     <em>price</em> показує ціну продукту."
+
+#: src/Plugin/Shortcode/ConcordpayButtonShortcode.php:85
+msgid "Inserts a link formatted as a ConcordPay button."
+msgstr "Вставляє посилання у форматі кнопки ConcordPay."
+
+#: src/Utils/ConcordPayHelper.php:71
+msgid "Error: Not enough input parameters."
+msgstr "Помилка: Недостатньо вхідних параметрів."
+
+#~ msgid "Invalid Transaction. Please try again"
+#~ msgstr "Недійсна транзакція. Будь ласка спробуйте ще раз"
+
+#~ msgid ""
+#~ "IPN for Order @order_number ignored: the transaction to be refunded does "
+#~ "not exist."
+#~ msgstr ""
+#~ "Ігнорується IPN для замовлення @order_number: транзакція, що підлягає "
+#~ "відшкодуванню, не існує."
+
+#~ msgid ""
+#~ "IPN for Order @order_number ignored: the transaction is already refunded."
+#~ msgstr ""
+#~ "IPN для замовлення @order_number ігнорується: транзакція вже відшкодована."
+
+#~ msgid "Error: for payment @id not found Payment Gateway!"
+#~ msgstr "Помилка: для оплати @id не знайдено платіжний шлюз!"
+
+#~ msgid "Error receiving the payment amount!"
+#~ msgstr "Помилка отримання суми платежу!"
+
+#~ msgid "An error has occurred during payment"
+#~ msgstr "An error has occurred during payment"
 
 #~ msgid "Your payment was successful with Order id : @orderid"
 #~ msgstr "Ваш платіж був успішним для замовлення ID: @orderid"
-
-#~ msgid "Commerce ConcordPay Payment Gateway"
-#~ msgstr "Commerce ConcordPay - платіжний шлюз"
 
 #~ msgid ""
 #~ "Provides Commerce integration for the ConcordPay Payment Gateway (Off-"
@@ -93,10 +262,10 @@ msgstr "An error has occurred during payment"
 #~ msgstr "Commerce"
 
 #~ msgid "This is the merchant id from the ConcordPay manager."
-#~ msgstr "Це ідентифікатор продавця з особистого кабінету ConcordPay."
+#~ msgstr "Це ідентифікатор торговця з особистого кабінету ConcordPay."
 
 #~ msgid "The secret key for the same user as used in Agreement ID."
-#~ msgstr "Секретний ключ вашого продавця."
+#~ msgstr "Секретний ключ вашого торговця."
 
 #~ msgid "ConcordPay (Redirect to ConcordPay)"
 #~ msgstr "ConcordPay (редирект на ConcordPay)"

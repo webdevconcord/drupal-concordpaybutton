@@ -1,0 +1,12 @@
+concordpay_button.settings:
+  path: '/admin/config/content/concordpay_button/settings'
+  defaults:
+    _form: '\Drupal\concordpay_button\Form\ConcordpaySettingsForm'
+    _title: 'ConcordPay Button Settings form'
+  requirements:
+    _permission: 'administer site configuration'
+concordpay_button.payment:
+  path: '/concordpay_button/payment'
+  defaults: { _controller: '\Drupal\concordpay_button\Controller\PaymentController::pay' }
+  requirements:
+    _permission: 'access content'
