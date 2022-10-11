@@ -19,18 +19,21 @@ class ConcordPayHelper {
    */
   protected static $checkoutParams = [
     self::CPB_MODE_NONE => [
+      'cpb_client_amount',
       'cpb_product_name',
       'cpb_product_price',
     ],
     self::CPB_MODE_PHONE => [
       'cpb_client_name',
       'cpb_client_phone',
+      'cpb_client_amount',
       'cpb_product_name',
       'cpb_product_price',
     ],
     self::CPB_MODE_EMAIL => [
       'cpb_client_name',
       'cpb_client_email',
+      'cpb_client_amount',
       'cpb_product_name',
       'cpb_product_price',
     ],
@@ -38,6 +41,7 @@ class ConcordPayHelper {
       'cpb_client_name',
       'cpb_client_phone',
       'cpb_client_email',
+      'cpb_client_amount',
       'cpb_product_name',
       'cpb_product_price',
     ],
@@ -90,6 +94,16 @@ class ConcordPayHelper {
       $email = trim($post['cpb_client_email']);
       if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $result['errors']['email'] = t('Invalid email');
+      }
+    }
+
+    // Check amount.
+    if (isset($post['cpb_product_price'], $post['cpb_client_amount'])) {
+      if (strtolower($post['cpb_product_price']) !== 'custom') {
+        $post['cpb_client_amount'] = $post['cpb_product_price'];
+      }
+      if (!is_numeric($post['cpb_client_amount']) || (float) $post['cpb_client_amount'] <= 0) {
+        $result['errors']['amount'] = t('Invalid amount');
       }
     }
 

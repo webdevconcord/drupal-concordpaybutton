@@ -115,6 +115,13 @@ class ConcordpaySettingsForm extends ConfigFormBase {
       '#description' => t('Redirect URL on canceled payment'),
     ];
 
+    $form['cpb_pay_button_text'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('ConcordPay button text'),
+      '#default_value' => $config->get('cpb_pay_button_text') ?? $config->get('donate'),
+      '#description' => t('Custom ConcordPay button text'),
+    ];
+
     return parent::buildForm($form, $form_state);
   }
 
@@ -133,6 +140,7 @@ class ConcordpaySettingsForm extends ConfigFormBase {
       ->set('cpb_approve_url', $form_state->getValue('cpb_approve_url'))
       ->set('cpb_decline_url', $form_state->getValue('cpb_decline_url'))
       ->set('cpb_cancel_url', $form_state->getValue('cpb_cancel_url'))
+      ->set('cpb_pay_button_text', $form_state->getValue('cpb_pay_button_text'))
       ->save();
 
     parent::submitForm($form, $form_state);

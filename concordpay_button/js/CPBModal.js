@@ -90,7 +90,7 @@ class CPBModal {
     cpbPopupFooter.classList.add('cpb-popup-footer');
 
     const cpbPopupSubmit = document.createElement('button');
-    cpbPopupSubmit.classList.add('cpb-popup-submit', 'button');
+    cpbPopupSubmit.classList.add('cpb-popup-submit', 'button', 'js-cpb-popup-submit');
     cpbPopupSubmit.id = 'cpb_popup_submit';
     cpbPopupSubmit.type = 'submit';
 
@@ -125,6 +125,10 @@ class CPBModal {
       );
     }
 
+    cpbCheckoutForm.appendChild(
+      this.renderClientField('amount', Drupal.t('Amount'), Drupal.t('Your prefer amount'))
+    );
+
     cpbCheckoutForm.appendChild(cpbProductName);
     cpbCheckoutForm.appendChild(cpbProductPrice);
     cpbCheckoutForm.appendChild(cpbPopupFooter);
@@ -152,6 +156,11 @@ class CPBModal {
     cpbClientField.name = `cpb_client_${field}`;
     cpbClientField.id = `cpb_client_${field}`;
     cpbClientField.value = '';
+
+    // Hide amount field group.
+    if (cpbClientField.classList.contains('js-cpb-client-amount')) {
+      cpbPopupInputGroup.classList.add('js-cpb-display-off');
+    }
 
     const cpbClientFieldDescription = document.createElement('div');
     cpbClientFieldDescription.classList.add('cpb-popup-description');

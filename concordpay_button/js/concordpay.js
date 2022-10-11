@@ -10,6 +10,13 @@
     const cpbModal = new CPBModal();
     cpbModal.mode = settings['cpb_mode'] ? settings['cpb_mode'] : 'none';
     cpbModal.render();
+    // Set pay button custom text.
+    if (settings['cpb_pay_button_text'].trim() !== '') {
+        const cpbPopupSubmit = document.querySelector('#cpb_popup_submit');
+        if (typeof cpbPopupSubmit !== 'undefined' && cpbPopupSubmit) {
+            cpbPopupSubmit.innerHTML = '<img src="/modules/custom/concordpay_button/images/logo.svg" alt="ConcordPay"><span>' + settings['cpb_pay_button_text'] + '</span>';
+        }
+    }
 
     const cpbPopup = document.querySelector('#cpb_popup');
     const cpbCheckoutForm = document.querySelector('#cpb_checkout_form');
@@ -20,8 +27,9 @@
     const clientNameField = document.querySelector('.js-cpb-client-name');
     const clientPhoneField = document.querySelector('.js-cpb-client-phone');
     const clientEmailField = document.querySelector('.js-cpb-client-email');
+    const clientAmountField = document.querySelector('.js-cpb-client-amount');
     // Required fields when making a purchase.
-    const requiredFields = [clientNameField, clientPhoneField, clientEmailField];
+    const requiredFields = [clientNameField, clientPhoneField, clientEmailField, clientAmountField];
 
     // ConcordPay payment button listener.
     window.addEventListener(
@@ -34,8 +42,19 @@
             if (typeof cpbPopup !== 'undefined' && cpbPopup && productNameField && productPriceField) {
                 productNameField.value = event.target.dataset.name;
                 productPriceField.value = event.target.dataset.price;
-                if (requiredFields.every(element => element === null)) {
-                    // if 'CPB_MODE_NONE' enabled.
+
+                // For custom amount value.
+                if (productPriceField.value.toLowerCase() === 'custom') {
+                    clientAmountField.parentNode.classList.remove('js-cpb-display-off');
+                } else {
+                    clientAmountField.parentNode.classList.add('js-cpb-display-off');
+                }
+
+                if (
+                  requiredFields.every(element => (element === null || element.name === 'cpb_client_amount'))
+                  && productPriceField.value.toLowerCase() !== 'custom'
+                ) {
+                    // If 'CPB_MODE_NONE' enabled.
                     cpbCheckoutForm.dispatchEvent(new Event('submit'));
                 } else {
                     // Other modes. Open popup window.
@@ -65,13 +84,11 @@
             }
         };
         // Event listeners for separate form fields.
-        requiredFields.map(
-            field => {
-                if (typeof field !== 'undefined' && field) {
-                    field.onchange = event => validateCheckoutField(event);
-                }
+        requiredFields.map(field => {
+            if (typeof field !== 'undefined' && field) {
+                field.onchange = event => validateCheckoutField(event);
             }
-        );
+        });
     }
 
     /**
@@ -89,6 +106,8 @@
             validatePhone(fieldValue);
         } else if (fieldId === 'cpb_client_email') {
             validateEmail(fieldValue);
+        } else if (fieldId === 'cpb_client_amount') {
+            validateAmount(fieldValue);
         }
     }
 
@@ -138,6 +157,23 @@
         }
 
         errorMessage.innerHTML = Drupal.t('Invalid email');
+        highlightNearestInput(errorMessage);
+    }
+
+    /**
+     * Validate amount field.
+     *
+     * @param value
+     */
+    function validateAmount(value) {
+        const errorMessage = document.querySelector('.js-cpb-error-amount');
+        let amount = value.trim();
+        if (amount.length !== 0 && !isNaN(amount) && !isNaN(parseFloat(amount)) && parseFloat(amount) > 0) {
+            removeValidationMessage(errorMessage);
+            return;
+        }
+
+        errorMessage.innerHTML = Drupal.t('Invalid amount');
         highlightNearestInput(errorMessage);
     }
 

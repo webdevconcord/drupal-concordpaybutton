@@ -50,7 +50,13 @@ License URI: [License](https://opensource.org/licenses/GPL-3.0)
 ## Использование кнопки ConcordPay
 
 В режиме редактирования содержимого материала (Article) добавить код кнопки и её аттрибуты:<br>
-`[concordpay_button name="Good Product" price="12.30"][/concordpay_button]`
+`[concordpay_button name='Good Product' price='12.30'][/concordpay_button]`
+
+**Режим ввода суммы платежа покупателем (для пожертвований)**<br>
+Если при создании кнопки значение суммы указать как `custom`, то для этой кнопки во всплывающем окне будет выводиться
+дополнительное поле `Сумма`, в котором посетитель сайта сможет указать своё значение суммы платежа.<br>
+Пример шорткода для данного режима:<br>
+`[concordpay_button name='Product name' price='custom'][/concordpay_button]`
 
 Здесь аттрибут **name** содержит название товара, а **price** - цену товара в валюте, указанной в настройках модуля.
 

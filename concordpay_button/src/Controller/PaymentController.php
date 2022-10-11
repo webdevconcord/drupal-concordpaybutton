@@ -34,12 +34,26 @@ class PaymentController extends ControllerBase {
 
     $baseUrl = \Drupal::request()->getSchemeAndHttpHost();
 
-    list($client_first_name, $client_last_name) = explode(' ', trim($data['cpb_client_name']));
+    if (
+        isset($data['cpb_product_price'], $data['cpb_client_amount'])
+        && strtolower($data['cpb_product_price']) === 'custom'
+    ) {
+      $data['cpb_product_price'] = $data['cpb_client_amount'];
+    }
+
+    $names = explode(' ', trim($data['cpb_client_name']));
+    $client_first_name = $names[0];
+    $client_last_name = '';
+    if (count($names) > 1) {
+      $client_last_name = $names[1];
+    }
+
+    $client_full_name = trim($client_first_name . ' ' . $client_last_name);
     $phone = ConcordPayHelper::sanitizePhone($data['cpb_client_phone']) ?? '';
     $email = $data['cpb_client_email'] ?? '';
 
     $description = $this->t('Payment by card on the site') . ' '
-        . rtrim("$baseUrl, $client_first_name $client_last_name, $phone", '. ,');
+        . rtrim("$baseUrl, $client_full_name, $phone", '. ,');
 
     $output = [
       'operation'    => 'Purchase',

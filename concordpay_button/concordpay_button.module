@@ -36,6 +36,7 @@ function concordpay_button_page_attachments(array &$page) {
     // Add ConcordPay params to js file.
     $config = ConcordPayHelper::getPluginConfig();
     $page['#attached']['drupalSettings']['cpb_mode'] = $config['cpb_mode'] ?? ConcordPayHelper::CPB_MODE_PHONE;
+    $page['#attached']['drupalSettings']['cpb_pay_button_text'] = $config['cpb_pay_button_text'] ?? 'Pay';
 
     $host = \Drupal::request()->getSchemeAndHttpHost();
     $cpb_ajax = Url::fromRoute('concordpay_button.payment')->toString();

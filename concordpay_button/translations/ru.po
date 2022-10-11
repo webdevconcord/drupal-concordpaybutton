@@ -10,8 +10,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2022-04-19 17:54+0300\n"
-"PO-Revision-Date: 2022-04-19 17:54+0300\n"
+"POT-Creation-Date: 2022-10-11 15:58+0300\n"
+"PO-Revision-Date: 2022-10-11 15:59+0300\n"
 "Last-Translator: \n"
 "Language-Team: Russian <EMAIL@ADDRESS>\n"
 "Language: ru\n"
@@ -68,19 +68,31 @@ msgstr "Email"
 msgid "Your email"
 msgstr "Ваша эл. почта"
 
-#: js/concordpay.js:107 src/Utils/ConcordPayHelper.php:77
+#: js/CPBModal.js:129
+msgid "Amount"
+msgstr "Сумма"
+
+#: js/CPBModal.js:129
+msgid "Your prefer amount"
+msgstr "Ваша предпочитаемая сумма"
+
+#: js/concordpay.js:123 src/Utils/ConcordPayHelper.php:81
 msgid "Invalid name"
 msgstr "Неправильное имя"
 
-#: js/concordpay.js:123 src/Utils/ConcordPayHelper.php:84
+#: js/concordpay.js:139 src/Utils/ConcordPayHelper.php:88
 msgid "Invalid phone number"
 msgstr "Неправильный телефон"
 
-#: js/concordpay.js:140 src/Utils/ConcordPayHelper.php:92
+#: js/concordpay.js:156 src/Utils/ConcordPayHelper.php:96
 msgid "Invalid email"
 msgstr "Неправильная эл. почта"
 
-#: src/Controller/PaymentController.php:41
+#: js/concordpay.js:173 src/Utils/ConcordPayHelper.php:106
+msgid "Invalid amount"
+msgstr "Неправильная сумма"
+
+#: src/Controller/PaymentController.php:48
 msgid "Payment by card on the site"
 msgstr "Оплата картой на сайте"
 
@@ -184,6 +196,14 @@ msgstr "URL перенаправления неудачного платежа"
 msgid "Redirect URL on canceled payment"
 msgstr "URL перенаправления отменённого платежа"
 
+#: src/Form/ConcordpaySettingsForm.php:120
+msgid "ConcordPay button text"
+msgstr "Текст в кнопке ConcordPay"
+
+#: src/Form/ConcordpaySettingsForm.php:122
+msgid "Custom ConcordPay button text"
+msgstr "Пользовательский текст в кнопке ConcordPay"
+
 #: src/Plugin/Shortcode/ConcordpayButtonShortcode.php:79
 msgid ""
 "[concordpay_button name=\"Product name\" price=\"12.50\"][/concordpay_button]"
@@ -205,7 +225,7 @@ msgstr ""
 msgid "Inserts a link formatted as a ConcordPay button."
 msgstr "Вставляет ссылку в виде кнопки ConcordPay."
 
-#: src/Utils/ConcordPayHelper.php:71
+#: src/Utils/ConcordPayHelper.php:75
 msgid "Error: Not enough input parameters."
 msgstr "Ошибка: Недостаточно входных параметров."
 
@@ -214,12 +234,6 @@ msgstr "Ошибка: Недостаточно входных параметро
 
 #~ msgid "Custom"
 #~ msgstr "Custom"
-
-#~ msgid "ConcordPay payment button settings"
-#~ msgstr "Настройки кнопки оплаты ConcordPay"
-
-#~ msgid "ConcordPay Button Settings form"
-#~ msgstr "Форма настройки кнопки ConcordPay"
 
 #~ msgid "Invalid Transaction. Please try again"
 #~ msgstr "Недействительная транзакция. Пожалуйста, попробуйте еще раз"
