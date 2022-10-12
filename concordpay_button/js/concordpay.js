@@ -45,9 +45,9 @@
 
                 // For custom amount value.
                 if (productPriceField.value.toLowerCase() === 'custom') {
-                    clientAmountField.parentNode.classList.remove('js-cpb-display-off');
+                    clientAmountField.closest('.cpb-popup-input-group').classList.remove('js-cpb-display-off');
                 } else {
-                    clientAmountField.parentNode.classList.add('js-cpb-display-off');
+                    clientAmountField.closest('.cpb-popup-input-group').classList.add('js-cpb-display-off');
                 }
 
                 if (

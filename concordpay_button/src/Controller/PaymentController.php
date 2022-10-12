@@ -39,17 +39,18 @@ class PaymentController extends ControllerBase {
         && strtolower($data['cpb_product_price']) === 'custom'
     ) {
       $data['cpb_product_price'] = $data['cpb_client_amount'];
+      $currency = $data['cpb_client_currency'];
+    }
+    else {
+      $currency = $config['cpb_currency'];
     }
 
-    $names = explode(' ', trim($data['cpb_client_name']));
-    $client_first_name = $names[0];
-    $client_last_name = '';
-    if (count($names) > 1) {
-      $client_last_name = $names[1];
-    }
+    $names = isset($data['cpb_client_name']) ? explode(' ', trim($data['cpb_client_name'])) : [];
+    $client_first_name = $names[0] ?? '';
+    $client_last_name = $names[1] ?? '';
 
     $client_full_name = trim($client_first_name . ' ' . $client_last_name);
-    $phone = ConcordPayHelper::sanitizePhone($data['cpb_client_phone']) ?? '';
+    $phone = isset($data['cpb_client_phone']) ? ConcordPayHelper::sanitizePhone($data['cpb_client_phone']) : '';
     $email = $data['cpb_client_email'] ?? '';
 
     $description = $this->t('Payment by card on the site') . ' '
@@ -60,7 +61,7 @@ class PaymentController extends ControllerBase {
       'merchant_id'  => $config['cpb_merchant_id'],
       'amount'       => (float) $data['cpb_product_price'],
       'order_id'     => $config['cpb_order_prefix'] . time(),
-      'currency_iso' => $config['cpb_currency'],
+      'currency_iso' => $currency,
       'description'  => $description,
       'approve_url'  => $config['cpb_approve_url'],
       'decline_url'  => $config['cpb_decline_url'],

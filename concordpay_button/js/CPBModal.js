@@ -8,6 +8,7 @@ class CPBModal {
   static cpbModeEmail = 'email';
   static cpbModePhoneEmail = 'phone_email';
   static cpbApi = 'https://pay.concord.ua/api/';
+  static cpbCurrencies = ['UAH', 'USD', 'EUR'];
 
   /**
    * Constructor method.
@@ -35,6 +36,9 @@ class CPBModal {
     return false;
   }
 
+  /**
+   * Render popup window.
+   */
   render() {
     this.setMode(this.mode);
 
@@ -140,6 +144,14 @@ class CPBModal {
     document.body.appendChild(cpbPopup);
   }
 
+  /**
+   * Create input field group.
+   *
+   * @param field
+   * @param label
+   * @param description
+   * @returns {HTMLDivElement}
+   */
   renderClientField(field, label, description)
   {
     const cpbPopupInputGroup = document.createElement('div');
@@ -157,11 +169,6 @@ class CPBModal {
     cpbClientField.id = `cpb_client_${field}`;
     cpbClientField.value = '';
 
-    // Hide amount field group.
-    if (cpbClientField.classList.contains('js-cpb-client-amount')) {
-      cpbPopupInputGroup.classList.add('js-cpb-display-off');
-    }
-
     const cpbClientFieldDescription = document.createElement('div');
     cpbClientFieldDescription.classList.add('cpb-popup-description');
     cpbClientFieldDescription.textContent = Drupal.t(description);
@@ -173,9 +180,52 @@ class CPBModal {
       el => cpbPopupInputGroup.appendChild(el)
     );
 
+    // Create amount field.
+    if (cpbClientField.classList.contains('js-cpb-client-amount')) {
+      // Create amount row with currency select.
+      const cpbFormRow = document.createElement('div');
+      cpbFormRow.classList.add('cpb-form-row');
+      cpbPopupInputGroup.querySelector('label').after(cpbFormRow);
+      cpbFormRow.appendChild(cpbPopupInputGroup.querySelector('input'));
+      // Hide amount field group.
+      cpbPopupInputGroup.classList.add('js-cpb-display-off');
+      // Add currency field.
+      cpbPopupInputGroup.querySelector('input').after(this.renderClientSelect('currency'));
+    }
+
     return cpbPopupInputGroup;
   }
 
+  /**
+   * Create select element.
+   *
+   * @param field
+   * @returns {HTMLSelectElement}
+   */
+  renderClientSelect(field)
+  {
+    const cpbClientField = document.createElement('select');
+    cpbClientField.classList.add('cpb-popup-input', `js-cpb-client-${field}`, 'cpb-popup-select');
+    cpbClientField.name = `cpb_client_${field}`;
+    cpbClientField.id = `cpb_client_${field}`;
+    cpbClientField.value = 'UAH';
+
+    CPBModal.cpbCurrencies.map(el => {
+      let option = document.createElement('option');
+      option.value = el;
+      option.innerHTML = el;
+      cpbClientField.appendChild(option);
+    });
+
+    return cpbClientField;
+  }
+
+  /**
+   * Create payment form.
+   *
+   * @param data
+   * @returns {HTMLFormElement}
+   */
   renderPaymentForm(data)
   {
     const cpbPaymentForm = document.createElement('form');

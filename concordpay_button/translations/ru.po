@@ -10,8 +10,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2022-10-11 15:58+0300\n"
-"PO-Revision-Date: 2022-10-11 15:59+0300\n"
+"POT-Creation-Date: 2022-10-12 10:03+0300\n"
+"PO-Revision-Date: 2022-10-12 10:04+0300\n"
 "Last-Translator: \n"
 "Language-Team: Russian <EMAIL@ADDRESS>\n"
 "Language: ru\n"
@@ -36,63 +36,63 @@ msgstr ""
 "X-Poedit-SearchPath-10: concordpay_button.module\n"
 "X-Poedit-SearchPath-11: concordpay_button.routing.yml\n"
 
-#: js/CPBModal.js:69
+#: js/CPBModal.js:73
 msgid "Buyer info"
-msgstr "Данные покупателя"
+msgstr "Данные пользователя"
 
-#: js/CPBModal.js:102
+#: js/CPBModal.js:106
 msgid "Pay Order"
 msgstr "Оплатить"
 
-#: js/CPBModal.js:114
+#: js/CPBModal.js:118
 msgid "Name"
 msgstr "Имя"
 
-#: js/CPBModal.js:114
+#: js/CPBModal.js:118
 msgid "Enter your name"
 msgstr "Введите ваше имя"
 
-#: js/CPBModal.js:119
+#: js/CPBModal.js:123
 msgid "Phone"
 msgstr "Телефон"
 
-#: js/CPBModal.js:119
+#: js/CPBModal.js:123
 msgid "Your contact phone"
 msgstr "Ваш контактный телефон"
 
-#: js/CPBModal.js:124
+#: js/CPBModal.js:128
 msgid "Email"
 msgstr "Email"
 
-#: js/CPBModal.js:124
+#: js/CPBModal.js:128
 msgid "Your email"
 msgstr "Ваша эл. почта"
 
-#: js/CPBModal.js:129
+#: js/CPBModal.js:133
 msgid "Amount"
 msgstr "Сумма"
 
-#: js/CPBModal.js:129
+#: js/CPBModal.js:133
 msgid "Your prefer amount"
 msgstr "Ваша предпочитаемая сумма"
 
-#: js/concordpay.js:123 src/Utils/ConcordPayHelper.php:81
+#: js/concordpay.js:126 src/Utils/ConcordPayHelper.php:81
 msgid "Invalid name"
 msgstr "Неправильное имя"
 
-#: js/concordpay.js:139 src/Utils/ConcordPayHelper.php:88
+#: js/concordpay.js:142 src/Utils/ConcordPayHelper.php:88
 msgid "Invalid phone number"
 msgstr "Неправильный телефон"
 
-#: js/concordpay.js:156 src/Utils/ConcordPayHelper.php:96
+#: js/concordpay.js:159 src/Utils/ConcordPayHelper.php:96
 msgid "Invalid email"
 msgstr "Неправильная эл. почта"
 
-#: js/concordpay.js:173 src/Utils/ConcordPayHelper.php:106
+#: js/concordpay.js:176 src/Utils/ConcordPayHelper.php:106
 msgid "Invalid amount"
 msgstr "Неправильная сумма"
 
-#: src/Controller/PaymentController.php:48
+#: src/Controller/PaymentController.php:52
 msgid "Payment by card on the site"
 msgstr "Оплата картой на сайте"
 

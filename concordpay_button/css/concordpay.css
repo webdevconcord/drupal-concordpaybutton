@@ -322,6 +322,19 @@ input[type="checkbox"].cpb-ui-toggle:checked:after {
   display: none;
 }
 
+.cpb-form-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cpb-form-row .cpb-popup-input {
+  width: 68%;
+}
+
+.cpb-form-row .cpb-popup-select {
+  width: 30%;
+}
+
 /* Other screen sizes */
 @media only screen and (min-width: 768px) {
   .cpb-popup-content {

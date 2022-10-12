@@ -15,7 +15,7 @@ class ConcordPayApi {
   public const TRANSACTION_STATUS_DECLINED = 'Declined';
   public const PHONE_LENGTH_MIN            = 10;
   public const PHONE_LENGTH_MAX            = 11;
-  public const ALLOWED_CURRENCIES          = ['UAH'];
+  public const ALLOWED_CURRENCIES          = ['UAH', 'USD', 'EUR'];
   public const RESPONSE_TYPE_PAYMENT       = 'payment';
   public const RESPONSE_TYPE_REVERSE       = 'reverse';
 

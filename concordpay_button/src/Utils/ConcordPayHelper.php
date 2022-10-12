@@ -20,6 +20,7 @@ class ConcordPayHelper {
   protected static $checkoutParams = [
     self::CPB_MODE_NONE => [
       'cpb_client_amount',
+      'cpb_client_currency',
       'cpb_product_name',
       'cpb_product_price',
     ],
@@ -27,6 +28,7 @@ class ConcordPayHelper {
       'cpb_client_name',
       'cpb_client_phone',
       'cpb_client_amount',
+      'cpb_client_currency',
       'cpb_product_name',
       'cpb_product_price',
     ],
@@ -34,6 +36,7 @@ class ConcordPayHelper {
       'cpb_client_name',
       'cpb_client_email',
       'cpb_client_amount',
+      'cpb_client_currency',
       'cpb_product_name',
       'cpb_product_price',
     ],
@@ -42,10 +45,22 @@ class ConcordPayHelper {
       'cpb_client_phone',
       'cpb_client_email',
       'cpb_client_amount',
+      'cpb_client_currency',
       'cpb_product_name',
       'cpb_product_price',
     ],
   ];
+
+  /**
+   * Allowed currencies.
+   */
+  protected static function getAllowedCurrencies() {
+    return [
+      'UAH' => 'UAH',
+      'USD' => 'USD',
+      'EUR' => 'EUR',
+    ];
+  }
 
   /**
    * Returns ConcordPay plugin config data.
@@ -105,6 +120,11 @@ class ConcordPayHelper {
       if (!is_numeric($post['cpb_client_amount']) || (float) $post['cpb_client_amount'] <= 0) {
         $result['errors']['amount'] = t('Invalid amount');
       }
+    }
+
+    // Check currency.
+    if (!isset($post['cpb_client_currency']) || !in_array($post['cpb_client_currency'], self::getAllowedCurrencies())) {
+      $result['errors']['currency'] = t('Invalid currency');
     }
 
     if (empty($result['errors'])) {
