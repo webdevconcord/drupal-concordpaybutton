@@ -45,8 +45,10 @@
 
                 // For custom amount value.
                 if (productPriceField.value.toLowerCase() === 'custom') {
+                    clientAmountField.value = '10';
                     clientAmountField.closest('.cpb-popup-input-group').classList.remove('js-cpb-display-off');
                 } else {
+                    clientAmountField.value = '';
                     clientAmountField.closest('.cpb-popup-input-group').classList.add('js-cpb-display-off');
                 }
 
