@@ -90,6 +90,12 @@ class CPBModal {
     cpbProductPrice.name = 'cpb_product_price';
     cpbProductPrice.value = '';
 
+    const cpbProductDescription = document.createElement('input');
+    cpbProductDescription.classList.add('js-cpb-product-description');
+    cpbProductDescription.type = 'hidden';
+    cpbProductDescription.name = 'cpb_product_description';
+    cpbProductDescription.value = '';
+
     const cpbPopupFooter = document.createElement('div');
     cpbPopupFooter.classList.add('cpb-popup-footer');
 
@@ -135,6 +141,7 @@ class CPBModal {
 
     cpbCheckoutForm.appendChild(cpbProductName);
     cpbCheckoutForm.appendChild(cpbProductPrice);
+    cpbCheckoutForm.appendChild(cpbProductDescription);
     cpbCheckoutForm.appendChild(cpbPopupFooter);
 
     cpbPopupContent.appendChild(cpbCheckoutForm);

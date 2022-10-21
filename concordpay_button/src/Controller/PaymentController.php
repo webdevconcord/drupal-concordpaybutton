@@ -53,8 +53,13 @@ class PaymentController extends ControllerBase {
     $phone = isset($data['cpb_client_phone']) ? ConcordPayHelper::sanitizePhone($data['cpb_client_phone']) : '';
     $email = $data['cpb_client_email'] ?? '';
 
-    $description = $this->t('Payment by card on the site') . ' '
-        . rtrim("$baseUrl, $client_full_name, $phone", '. ,');
+    if (isset($data['cpb_product_description']) && trim($data['cpb_product_description']) !== '') {
+      $description = $data['cpb_product_description'];
+    }
+    else {
+      $description = $this->t('Payment by card on the site') . ' '
+            . rtrim("$baseUrl, $client_full_name, $phone", '. ,');
+    }
 
     $output = [
       'operation'    => 'Purchase',

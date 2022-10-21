@@ -34,6 +34,7 @@ class ConcordpayButtonShortcode extends ShortcodeBase {
       'type'  => 'cpb_submit',
       'name'  => 'Example name',
       'price' => '0.00',
+      'description'    => '',
       'media_file_url' => FALSE,
     ],
       $attributes
@@ -52,9 +53,10 @@ class ConcordpayButtonShortcode extends ShortcodeBase {
       'id'    => $attributes['id'],
       'style' => $attributes['style'],
       'title' => $title,
-      'data-type'  => $attributes['type'],
-      'data-name'  => $attributes['name'],
-      'data-price' => $attributes['price'],
+      'data-type'        => $attributes['type'],
+      'data-name'        => $attributes['name'],
+      'data-price'       => $attributes['price'],
+      'data-description' => $attributes['description'],
     ];
 
     // Filter away empty attributes.

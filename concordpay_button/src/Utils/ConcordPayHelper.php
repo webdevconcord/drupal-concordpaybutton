@@ -23,6 +23,7 @@ class ConcordPayHelper {
       'cpb_client_currency',
       'cpb_product_name',
       'cpb_product_price',
+      'cpb_product_description',
     ],
     self::CPB_MODE_PHONE => [
       'cpb_client_name',
@@ -31,6 +32,7 @@ class ConcordPayHelper {
       'cpb_client_currency',
       'cpb_product_name',
       'cpb_product_price',
+      'cpb_product_description',
     ],
     self::CPB_MODE_EMAIL => [
       'cpb_client_name',
@@ -39,6 +41,7 @@ class ConcordPayHelper {
       'cpb_client_currency',
       'cpb_product_name',
       'cpb_product_price',
+      'cpb_product_description',
     ],
     self::CPB_MODE_PHONE_EMAIL => [
       'cpb_client_name',
@@ -48,6 +51,7 @@ class ConcordPayHelper {
       'cpb_client_currency',
       'cpb_product_name',
       'cpb_product_price',
+      'cpb_product_description',
     ],
   ];
 

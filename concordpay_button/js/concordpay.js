@@ -23,6 +23,7 @@
     // Shortcode parameters.
     const productNameField = document.querySelector('.js-cpb-product-name');
     const productPriceField = document.querySelector('.js-cpb-product-price');
+    const productDescriptionField = document.querySelector('.js-cpb-product-description');
     // Client info.
     const clientNameField = document.querySelector('.js-cpb-client-name');
     const clientPhoneField = document.querySelector('.js-cpb-client-phone');
@@ -42,6 +43,7 @@
             if (typeof cpbPopup !== 'undefined' && cpbPopup && productNameField && productPriceField) {
                 productNameField.value = event.target.dataset.name;
                 productPriceField.value = event.target.dataset.price;
+                productDescriptionField.value = event.target.dataset.description || '';
 
                 // For custom amount value.
                 if (productPriceField.value.toLowerCase() === 'custom') {
@@ -248,6 +250,13 @@
     }
 
     /**
+     * Unlock the scroll page body while redirecting to the payment page.
+     */
+    function unlockBody() {
+        document.body.classList.remove('cpb-lock');
+    }
+
+    /**
      * Checking if json was received in the response.
      *
      * @param str
@@ -279,6 +288,7 @@
     function resetFormFields() {
         productNameField.value = '';
         productPriceField.value = '';
+        productDescriptionField.value = '';
         cpbCheckoutForm.reset();
     }
 
