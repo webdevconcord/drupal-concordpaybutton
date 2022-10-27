@@ -17,6 +17,19 @@
             cpbPopupSubmit.innerHTML = '<img src="/modules/custom/concordpay_button/images/logo.svg" alt="ConcordPay"><span>' + settings['cpb_pay_button_text'] + '</span>';
         }
     }
+    if (settings['cpb_currency_popup'] && settings['cpb_currency_default']) {
+        const currencies = document.querySelector('#cpb_client_currency');
+        Array.from(currencies.children).map(item => {
+            // Leave only allowed currencies.
+            if (!settings['cpb_currency_popup'][item.value]) {
+                item.remove();
+            }
+            // Set default currency.
+            if (item.value === settings['cpb_currency_default']) {
+                item.selected = true;
+            }
+        });
+    }
 
     const cpbPopup = document.querySelector('#cpb_popup');
     const cpbCheckoutForm = document.querySelector('#cpb_checkout_form');
@@ -47,6 +60,7 @@
 
                 // For custom amount value.
                 if (productPriceField.value.toLowerCase() === 'custom') {
+                    // Default amount value in custom amount mode.
                     clientAmountField.value = '10';
                     clientAmountField.closest('.cpb-popup-input-group').classList.remove('js-cpb-display-off');
                 } else {

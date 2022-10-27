@@ -31,7 +31,7 @@ class ConcordpaySettingsForm extends ConfigFormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     $config = $this->config('concordpay_button.settings');
-    $baseUrl = $host = \Drupal::request()->getSchemeAndHttpHost();
+    $baseUrl = \Drupal::request()->getSchemeAndHttpHost();
 
     $form['cpb_merchant_id'] = [
       '#type' => 'textfield',
@@ -53,14 +53,32 @@ class ConcordpaySettingsForm extends ConfigFormBase {
     $form['cpb_currency'] = [
       '#type' => 'select',
       '#title' => $this->t('Currency'),
-      '#options' => [
-        'UAH' => $this->t('Ukrainian hryvnia'),
-        'USD' => $this->t('U.S. Dollar'),
-        'EUR' => $this->t('Euro'),
-      ],
-      '#default_value' => $config->get('cpb_currency'),
+      '#options' => $this->cpbGetCurrencies(),
+      '#default_value' => $config->get('cpb_currency') ?? 'UAH',
       '#description' => t('Specify your currency'),
     ];
+
+    // Это поле нужно для того, чтобы сохранить значение чекбокса валюты,
+    // имеющего состояние 'disabled'.
+    $form['cpb_currency_default'] = [
+      '#type' => 'hidden',
+      '#default_value' => $form['cpb_currency']['#default_value'],
+    ];
+
+    $form['cpb_currency_popup'] = [
+      '#type' => 'checkboxes',
+      '#title' => $this->t('Currency for popup'),
+      '#options' => $this->cpbGetCurrencies(),
+      '#description' => t('Specify your popup currency'),
+    ];
+
+    if ($config->get('cpb_currency_popup') === NULL) {
+      $form['cpb_currency_popup']['#default_value'] = [$form['cpb_currency']['#default_value']];
+    }
+    else {
+      $form['cpb_currency_popup']['#default_value'] = $this->cpbGetCurrenciesPopup();
+    }
+    $form['cpb_currency_popup'][$form['cpb_currency']['#default_value']]['#disabled'] = TRUE;
 
     $form['cpb_mode'] = [
       '#type' => 'select',
@@ -129,11 +147,14 @@ class ConcordpaySettingsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
+    $currencies = $form_state->getValue('cpb_currency_popup');
+    $currencies[$form_state->getValue('cpb_currency_default')] = $form_state->getValue('cpb_currency_default');
     // Retrieve the configuration.
     $this->configFactory->getEditable('concordpay_button.settings')
       ->set('cpb_merchant_id', $form_state->getValue('cpb_merchant_id'))
       ->set('cpb_secret_key', $form_state->getValue('cpb_secret_key'))
       ->set('cpb_currency', $form_state->getValue('cpb_currency'))
+      ->set('cpb_currency_popup', $currencies)
       ->set('cpb_mode', $form_state->getValue('cpb_mode'))
       ->set('cpb_language', $form_state->getValue('cpb_language'))
       ->set('cpb_order_prefix', $form_state->getValue('cpb_order_prefix'))
@@ -144,6 +165,34 @@ class ConcordpaySettingsForm extends ConfigFormBase {
       ->save();
 
     parent::submitForm($form, $form_state);
+  }
+
+  /**
+   * Returns plugin currencies.
+   *
+   * @return array
+   */
+  protected function cpbGetCurrencies() {
+    return [
+      'UAH' => $this->t('Ukrainian hryvnia'),
+      'USD' => $this->t('U.S. Dollar'),
+      'EUR' => $this->t('Euro'),
+    ];
+  }
+
+  /**
+   * @return array
+   */
+  protected function cpbGetCurrenciesPopup() {
+    $config = $this->config('concordpay_button.settings');
+    $currencies = [];
+    foreach ($config->get('cpb_currency_popup') as $key => $val) {
+      if ($key === $val) {
+        $currencies[$key] = $val;
+      }
+    }
+
+    return $currencies;
   }
 
 }

@@ -10,8 +10,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2022-10-12 10:03+0300\n"
-"PO-Revision-Date: 2022-10-12 10:04+0300\n"
+"POT-Creation-Date: 2022-10-27 16:16+0300\n"
+"PO-Revision-Date: 2022-10-27 16:16+0300\n"
 "Last-Translator: \n"
 "Language-Team: Russian <EMAIL@ADDRESS>\n"
 "Language: ru\n"
@@ -40,59 +40,59 @@ msgstr ""
 msgid "Buyer info"
 msgstr "Данные пользователя"
 
-#: js/CPBModal.js:106
+#: js/CPBModal.js:112
 msgid "Pay Order"
 msgstr "Оплатить"
 
-#: js/CPBModal.js:118
+#: js/CPBModal.js:124
 msgid "Name"
 msgstr "Имя"
 
-#: js/CPBModal.js:118
+#: js/CPBModal.js:124
 msgid "Enter your name"
 msgstr "Введите ваше имя"
 
-#: js/CPBModal.js:123
+#: js/CPBModal.js:129
 msgid "Phone"
 msgstr "Телефон"
 
-#: js/CPBModal.js:123
+#: js/CPBModal.js:129
 msgid "Your contact phone"
 msgstr "Ваш контактный телефон"
 
-#: js/CPBModal.js:128
+#: js/CPBModal.js:134
 msgid "Email"
 msgstr "Email"
 
-#: js/CPBModal.js:128
+#: js/CPBModal.js:134
 msgid "Your email"
 msgstr "Ваша эл. почта"
 
-#: js/CPBModal.js:133
+#: js/CPBModal.js:139
 msgid "Amount"
 msgstr "Сумма"
 
-#: js/CPBModal.js:133
+#: js/CPBModal.js:139
 msgid "Your prefer amount"
 msgstr "Ваша предпочитаемая сумма"
 
-#: js/concordpay.js:126 src/Utils/ConcordPayHelper.php:81
+#: js/concordpay.js:143 src/Utils/ConcordPayHelper.php:100
 msgid "Invalid name"
 msgstr "Неправильное имя"
 
-#: js/concordpay.js:142 src/Utils/ConcordPayHelper.php:88
+#: js/concordpay.js:159 src/Utils/ConcordPayHelper.php:107
 msgid "Invalid phone number"
 msgstr "Неправильный телефон"
 
-#: js/concordpay.js:159 src/Utils/ConcordPayHelper.php:96
+#: js/concordpay.js:176 src/Utils/ConcordPayHelper.php:115
 msgid "Invalid email"
 msgstr "Неправильная эл. почта"
 
-#: js/concordpay.js:176 src/Utils/ConcordPayHelper.php:106
+#: js/concordpay.js:193 src/Utils/ConcordPayHelper.php:125
 msgid "Invalid amount"
 msgstr "Неправильная сумма"
 
-#: src/Controller/PaymentController.php:52
+#: src/Controller/PaymentController.php:60
 msgid "Payment by card on the site"
 msgstr "Оплата картой на сайте"
 
@@ -113,105 +113,113 @@ msgstr "Секретный ключ"
 msgid "Currency"
 msgstr "Валюта"
 
-#: src/Form/ConcordpaySettingsForm.php:57
-msgid "Ukrainian hryvnia"
-msgstr "Украинская гривна"
-
 #: src/Form/ConcordpaySettingsForm.php:58
-msgid "U.S. Dollar"
-msgstr "Доллар США"
-
-#: src/Form/ConcordpaySettingsForm.php:59
-msgid "Euro"
-msgstr "Евро"
-
-#: src/Form/ConcordpaySettingsForm.php:62
 msgid "Specify your currency"
 msgstr "Укажите свою валюту"
 
-#: src/Form/ConcordpaySettingsForm.php:67
+#: src/Form/ConcordpaySettingsForm.php:70
+msgid "Currency for popup"
+msgstr "Валюта для всплывающего окна"
+
+#: src/Form/ConcordpaySettingsForm.php:72
+msgid "Specify your popup currency"
+msgstr "Укажите разрешённые валюты для всплывающего окна"
+
+#: src/Form/ConcordpaySettingsForm.php:85
 msgid "Required fields"
 msgstr "Обязательные поля"
 
-#: src/Form/ConcordpaySettingsForm.php:69
+#: src/Form/ConcordpaySettingsForm.php:87
 msgid "Do not require"
 msgstr "Не требовать"
 
-#: src/Form/ConcordpaySettingsForm.php:70
+#: src/Form/ConcordpaySettingsForm.php:88
 msgid "Name + Phone"
 msgstr "Имя + Телефон"
 
-#: src/Form/ConcordpaySettingsForm.php:71
+#: src/Form/ConcordpaySettingsForm.php:89
 msgid "Name + Email"
 msgstr "Имя + Email"
 
-#: src/Form/ConcordpaySettingsForm.php:72
+#: src/Form/ConcordpaySettingsForm.php:90
 msgid "Name + Phone + Email"
 msgstr "Имя + Телефон + Email"
 
-#: src/Form/ConcordpaySettingsForm.php:75
+#: src/Form/ConcordpaySettingsForm.php:93
 msgid "Fields required to be entered by the buyer"
 msgstr "Поля, которые должен заполнять покупатель"
 
-#: src/Form/ConcordpaySettingsForm.php:80
+#: src/Form/ConcordpaySettingsForm.php:98
 msgid "Payment page language"
 msgstr "Язык страницы оплаты"
 
-#: src/Form/ConcordpaySettingsForm.php:82
+#: src/Form/ConcordpaySettingsForm.php:100
 msgid "UA"
 msgstr "UA"
 
-#: src/Form/ConcordpaySettingsForm.php:83
+#: src/Form/ConcordpaySettingsForm.php:101
 msgid "EN"
 msgstr "EN"
 
-#: src/Form/ConcordpaySettingsForm.php:84
+#: src/Form/ConcordpaySettingsForm.php:102
 msgid "RU"
 msgstr "RU"
 
-#: src/Form/ConcordpaySettingsForm.php:87
+#: src/Form/ConcordpaySettingsForm.php:105
 msgid "Specify ConcordPay payment page language"
 msgstr "Укажите язык страницы оплаты ConcordPay"
 
-#: src/Form/ConcordpaySettingsForm.php:92
+#: src/Form/ConcordpaySettingsForm.php:110
 msgid "Order prefix"
 msgstr "Префикс заказа"
 
-#: src/Form/ConcordpaySettingsForm.php:94
+#: src/Form/ConcordpaySettingsForm.php:112
 msgid "Prefix for order"
 msgstr "Префикс для обозначения заказа"
 
-#: src/Form/ConcordpaySettingsForm.php:99
-#: src/Form/ConcordpaySettingsForm.php:101
+#: src/Form/ConcordpaySettingsForm.php:117
+#: src/Form/ConcordpaySettingsForm.php:119
 msgid "Redirect URL on successful payment"
 msgstr "URL перенаправления успешного платежа"
 
-#: src/Form/ConcordpaySettingsForm.php:106
-#: src/Form/ConcordpaySettingsForm.php:108
+#: src/Form/ConcordpaySettingsForm.php:124
+#: src/Form/ConcordpaySettingsForm.php:126
 msgid "Redirect URL on failed payment"
 msgstr "URL перенаправления неудачного платежа"
 
-#: src/Form/ConcordpaySettingsForm.php:113
-#: src/Form/ConcordpaySettingsForm.php:115
+#: src/Form/ConcordpaySettingsForm.php:131
+#: src/Form/ConcordpaySettingsForm.php:133
 msgid "Redirect URL on canceled payment"
 msgstr "URL перенаправления отменённого платежа"
 
-#: src/Form/ConcordpaySettingsForm.php:120
+#: src/Form/ConcordpaySettingsForm.php:138
 msgid "ConcordPay button text"
 msgstr "Текст в кнопке ConcordPay"
 
-#: src/Form/ConcordpaySettingsForm.php:122
+#: src/Form/ConcordpaySettingsForm.php:140
 msgid "Custom ConcordPay button text"
 msgstr "Пользовательский текст в кнопке ConcordPay"
 
-#: src/Plugin/Shortcode/ConcordpayButtonShortcode.php:79
+#: src/Form/ConcordpaySettingsForm.php:177
+msgid "Ukrainian hryvnia"
+msgstr "Украинская гривна"
+
+#: src/Form/ConcordpaySettingsForm.php:178
+msgid "U.S. Dollar"
+msgstr "Доллар США"
+
+#: src/Form/ConcordpaySettingsForm.php:179
+msgid "Euro"
+msgstr "Евро"
+
+#: src/Plugin/Shortcode/ConcordpayButtonShortcode.php:81
 msgid ""
 "[concordpay_button name=\"Product name\" price=\"12.50\"][/concordpay_button]"
 msgstr ""
 "[concordpay_button name=\"Название товара\" price=\"12.50\"][/"
 "concordpay_button]"
 
-#: src/Plugin/Shortcode/ConcordpayButtonShortcode.php:81
+#: src/Plugin/Shortcode/ConcordpayButtonShortcode.php:83
 msgid ""
 "Inserts a link formatted like as a button. The <em>name</em> parameter "
 "provides the Product name.\n"
@@ -221,13 +229,17 @@ msgstr ""
 "содержит название продукта.\n"
 " Параметр <em>price</em> указывает цену продукта."
 
-#: src/Plugin/Shortcode/ConcordpayButtonShortcode.php:85
+#: src/Plugin/Shortcode/ConcordpayButtonShortcode.php:87
 msgid "Inserts a link formatted as a ConcordPay button."
 msgstr "Вставляет ссылку в виде кнопки ConcordPay."
 
-#: src/Utils/ConcordPayHelper.php:75
+#: src/Utils/ConcordPayHelper.php:94
 msgid "Error: Not enough input parameters."
 msgstr "Ошибка: Недостаточно входных параметров."
+
+#: src/Utils/ConcordPayHelper.php:131
+msgid "Invalid currency"
+msgstr "Неправильная валюта"
 
 #~ msgid "ConcordPay payment button plugin"
 #~ msgstr "Плагин кнопки оплаты ConcordPay"

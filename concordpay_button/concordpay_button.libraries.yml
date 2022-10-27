@@ -4,6 +4,7 @@ concordpay_button:
     theme:
       css/concordpay.css: {}
   js:
+      js/CPBAdmin.js: {}
       js/CPBModal.js: {}
       js/concordpay.js: {}
 

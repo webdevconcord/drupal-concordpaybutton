@@ -41,4 +41,7 @@ function concordpay_button_page_attachments(array &$page) {
     $host = \Drupal::request()->getSchemeAndHttpHost();
     $cpb_ajax = Url::fromRoute('concordpay_button.payment')->toString();
     $page['#attached']['drupalSettings']['cpb_ajax']['url'] = $host . $cpb_ajax;
+
+    $page['#attached']['drupalSettings']['cpb_currency_default'] = $config['cpb_currency'] ?? 'UAH';
+    $page['#attached']['drupalSettings']['cpb_currency_popup'] = $config['cpb_currency_popup'] ?? ['UAH', 'USD', 'EUR'];
 }
